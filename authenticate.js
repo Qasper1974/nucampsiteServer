@@ -48,14 +48,3 @@ exports.verifyAdmin = function (req, next) {
         return next(err);
     }
 };
-
-
-exports.verifyLoggedInUser = function (req, next) {
-    if ((req.user._id).equals(jwt_payload._id)) {
-        next();
-    } else {
-        const err = new Error('You are not authorized to perform this operation!');
-        err.status = 403;
-        return next(err);
-    }
-};
