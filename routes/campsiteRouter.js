@@ -208,8 +208,7 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
         const campsiteContainsCommentByReqId = campsite && campsite.comments.id(req.params.commentId)
         
         if (campsiteContainsCommentByReqId) {
-            const authorIdOfComment = camspite.comments.id(req.params.commentId).author._id
-​
+            const authorIdOfComment = campsite.comments.id(req.params.commentId).author._id
             if((authorIdOfComment).equals(req.user._id)) {
                 campsite.comments.id(req.params.commentId).remove();
                 campsite.save()
